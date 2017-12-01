@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:trigger="clr-namespace:App_Pruebas.Triggers;assembly=App_Pruebas"
+    x:Class="App_Pruebas.App">
+	<Application.Resources>
+		<ResourceDictionary>
+        <!--Triggers-->
+            <trigger:LengthTriggerConverter x:Key="lengthTriggerConverter"/> 
+            <trigger:PickerTriggerConverter x:Key="pickerTriggerConverter"/>
+
+        <!--Style-->
+            <Style x:Key="buttonConfirmar" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="BorderRadius" Value="20" />
+                <Setter Property="BorderWidth" Value="0" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="DarkGray"/>
+            </Style>
+             <Style x:Key="buttonCancelar" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="BorderRadius" Value="20" />
+                <Setter Property="BorderWidth" Value="0" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="DarkGray"/>
+            </Style>
+            <Style x:Key="contenedorPrincipal" TargetType= "StackLayout">
+                <Setter Property="Orientation" Value="Vertical"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="contenedorBase" TargetType= "NavigationPage">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+<!--                <Setter Property="BarBackgroundColor" Value="Blue"/>-->
+<!--                <Setter Property="BarTextColor" Value="White"/>-->
+            </Style>
+            <Style TargetType= "ContentPage">
+                <Setter Property="BackgroundColor" Value="White"/>
+<!--                <Setter Property="BarBackgroundColor" Value="Blue"/>-->
+<!--                <Setter Property="BarTextColor" Value="White"/>-->
+            </Style>
+            <Style x:Key="contenedorButton" TargetType= "StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            </Style>
+             <Style x:Key="contenedorMenu" TargetType= "ContentPage">
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+            <Style x:Key="labelTitulo" TargetType= "Label">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="TextColor" Value="DarkGray"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="10,10,10,10"/>
+            </Style>
+             <Style x:Key="labelCampo" TargetType= "Label">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="TextColor" Value="DarkGray"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="Margin" Value="5,5,5,5"/>
+            </Style>
+             <Style x:Key="labelInformacion" TargetType= "Label">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="10,20,10,10"/>
+            </Style>
+            <Style x:Key="entryNormal" TargetType= "Entry">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="TextColor" Value="DarkGray"/>
+                <Setter Property="Margin" Value="5,5,5,5"/>
+                <Setter Property="WidthRequest" Value="320"/>
+            </Style>
+            <Style x:Key="pickerNormal" TargetType="Picker">
+                <Setter Property="TextColor" Value="DarkGray"/>
+                <Setter Property="Margin" Value="5,5,5,5"/>
+                <Setter Property="WidthRequest" Value="320"/>
+            </Style>
+        </ResourceDictionary>
+	</Application.Resources>
+</Application>

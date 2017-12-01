@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            x:Class="App_Pruebas.View.LoginView"
+            xmlns:local="clr-namespace:App_Pruebas.Triggers;assembly=App_Pruebas"
+            Title="Login">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:LengthTriggerConverter x:Key="lengthTriggerConverter" />
+            <local:PasswordTriggerConvert x:Key="passwordTriggerConvert"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Style="{StaticResource contenedorPrincipal}" >
+        <Label Text="Bienvenido" Style="{StaticResource labelTitulo}"/>
+        <Label Text="Usuario:" Style="{StaticResource labelCampo}"/>
+        <Entry x:Name="entryUser" Text="{Binding Usuario}" 
+        Placeholder="Ingrese su usuario"
+        Style="{StaticResource entryNormal}"/>
+        <Label Text="Contraseña:" Style="{StaticResource labelCampo}"/>
+        <Entry x:Name="EntryPass" Text="{Binding Password}" 
+        Placeholder="Ingrese su contraseña" IsPassword="true"
+        Style="{StaticResource entryNormal}"/>
+        <StackLayout Style="{StaticResource contenedorButton}" >
+            <Button Text="Aceptar" Command="{Binding ValidarUsuarioCommand}" 
+                IsEnabled="{Binding EnabledAceptar}"
+                Style="{StaticResource buttonConfirmar}">
+                <Button.Triggers>
+                    <MultiTrigger TargetType="Button">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding Source={x:Reference entryUser},
+                                                   Path=Text.Length,
+                                                   Converter={StaticResource lengthTriggerConverter}}"
+                                               Value="true" />
+                            <BindingCondition Binding="{Binding Source={x:Reference EntryPass},
+                                                   Path=Text.Length,
+                                                   Converter={StaticResource lengthTriggerConverter}}"
+                                               Value="true" />
+                            <BindingCondition Binding="{Binding Source={x:Reference EntryPass},
+                                                   Path=Text,
+                                                   Converter={StaticResource passwordTriggerConvert}}"
+                                               Value="true" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsEnabled" Value="True" />
+                    </MultiTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button Text="Limpiar" Command="{Binding CancelarCommand}" 
+            Style="{StaticResource buttonCancelar}"/>
+        </StackLayout>
+        <Label Text="{Binding TextoMensaje, Mode=OneWay}"
+        Style="{StaticResource labelInformacion}" />
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="App_Pruebas.View.AddBookView"
+    xmlns:behaviors="clr-namespace:App_Pruebas.Behaviors;assembly=App_Pruebas"
+    Title="Agregar Libro">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+    	<StackLayout Margin="5,10,5,5">
+            <Label Text="Codigo:" Style="{StaticResource labelCampo}"/>
+            <Entry x:Name="entryCodigo" Style="{StaticResource entryNormal}"
+                   Text="{Binding Codigo}" Keyboard="Numeric"/>
+            <Label Text="Nombre:" Style="{StaticResource labelCampo}"/>
+            <Entry x:Name="entryNombre" Style="{StaticResource entryNormal}"
+                   Text="{Binding Nombre}"/>
+            <Label Text="Autor:" Style="{StaticResource labelCampo}"/>
+            <Entry x:Name="entryAutor" Style="{StaticResource entryNormal}"
+                   Text="{Binding Autor}"/>
+            <Label Text="Año:" Style="{StaticResource labelCampo}"/>
+            <Entry x:Name="entryAno" Style="{StaticResource entryNormal}"
+                   Text="{Binding Ano}" Keyboard="Numeric">
+                   <Entry.Behaviors>
+                    <behaviors:YearValueBehavior x:Name="anoBehavior"/> 
+                   </Entry.Behaviors>
+            </Entry>
+            <Label Text="Descripcion:" Style="{StaticResource labelCampo}"/>
+            <Entry Style="{StaticResource entryNormal}"
+                   Text="{Binding Descripcion, Mode=OneWayToSource}"/>
+            <Label Text="Idioma:" Style="{StaticResource labelCampo}"/>
+            <Picker Style="{StaticResource pickerNormal}"
+                x:Name="pickerIdioma" 
+                ItemsSource="{Binding Idiomas, Mode=OneWay}" 
+                SelectedItem="{Binding Idioma}" />
+            <StackLayout Style="{StaticResource contenedorButton}">
+                <Button Text="Aceptar"
+                    Command="{Binding RegistrarLibro}"
+                    IsEnabled="{Binding EnabledAceptar}"
+                    Style="{StaticResource buttonConfirmar}">
+                    <Button.Triggers>
+                        <MultiTrigger TargetType="Button">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference anoBehavior},
+                                                           Path=IsValid}"
+                                                  Value="true"/>
+                                <BindingCondition Binding="{Binding Source={x:Reference entryCodigo},
+                                                       Path=Text.Length,
+                                                       Converter={StaticResource lengthTriggerConverter}}"
+                                                   Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference entryNombre},
+                                                       Path=Text.Length,
+                                                       Converter={StaticResource lengthTriggerConverter}}"
+                                                   Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference entryAutor},
+                                                       Path=Text.Length,
+                                                       Converter={StaticResource lengthTriggerConverter}}"
+                                                   Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference pickerIdioma},
+                                                        Path=SelectedItem,
+                                                        Converter={StaticResource pickerTriggerConverter}}"
+                                                    Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True" />
+                        </MultiTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="Limpiar"
+                    Command="{Binding Limpiar}"
+                Style="{StaticResource buttonCancelar}"/>
+            </StackLayout>
+            <Label Text="{Binding TextoMensaje, Mode=OneWay}"
+            Style="{StaticResource labelInformacion}" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

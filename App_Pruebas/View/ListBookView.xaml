@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="App_Pruebas.View.ListBookView"
+    Title="Lista de libros">
+	<StackLayout>
+        <Label Text="Libros" Margin="10" />
+        <ListView ItemsSource="{Binding ListBooks}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                  <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding Name}" FontSize="12"/>
+                        <StackLayout>
+                            <Label Text="{Binding Detalle}" FontSize="8"/>
+                            <Label Text="{Binding Language}" FontSize="8"/>
+                        </StackLayout>
+                    </StackLayout>
+                  </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

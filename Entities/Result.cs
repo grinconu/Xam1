@@ -1,0 +1,1 @@
+﻿namespace Entities {     using System;     using Newtonsoft.Json;      public class Result     {         [JsonProperty("data")]         public object Data { get; set; }          [JsonProperty("message")]         public string Message { get; set; }     } }

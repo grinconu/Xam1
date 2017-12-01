@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace:App_Pruebas.View;assembly=App_Pruebas" 
+                  xmlns:VM="clr-namespace:App_Pruebas.ViewModel;assembly=App_Pruebas"
+                  x:Class="App_Pruebas.View.MasterPage">
+	 <MasterDetailPage.Master>
+      <local:MenuView x:Name="menuView"/>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage Style="{StaticResource contenedorBase}">
+            <x:Arguments>
+                <local:ListBookView />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>
